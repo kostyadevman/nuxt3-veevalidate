@@ -2,55 +2,54 @@
 
   <h1>Elegant Contact Form.</h1>
    <div class="info"><a href="https://www.grandvincent-marion.fr" target="_blank"><p> Made with <i class="fa fa-heart"></i> by Marion Grandvincent </p></a></div>
-  
-<form>
-      <h1>Should you have any questions, please do not hesitate to contact me :</h1>
-      
-  <div class="contentform">
-      <div id="sendmessage"> Your message has been sent successfully. Thank you. </div>
 
+<v-form @submit="onSubmit" v-slot="{ errors }">
+      <h1>Should you have any questions, please do not hesitate to contact me :</h1>
+
+  <div class="contentform">
+      <div id="sendmessage" :class="{ 'show': isSubmitted }"> Your message has been sent successfully. Thank you. </div>
 
       <div class="leftcontact">
-                <div class="form-group">
-                  <p>Surname<span>*</span></p>
-                  <span class="icon-case"><i class="fa fa-male"></i></span>
-                      <input type="text" name="nom" id="nom" data-rule="required" data-msg="Vérifiez votre saisie sur les champs : Le champ 'Nom' doit être renseigné."/>
-              <div class="validation"></div>
-     </div> 
+          <div class="form-group">
+            <p>Surname<span>*</span></p>
+            <span class="icon-case"><i class="fa fa-male"></i></span>
+              <v-field type="text" label="surname" name="nom" id="nom" rules="required|alpha_spaces" data-msg="Vérifiez votre saisie sur les champs : Le champ 'Nom' doit être renseigné."/>
+              <div class="validation">{{ errors.nom }}</div>
+          </div> 
 
           <div class="form-group">
           <p>Name <span>*</span></p>
           <span class="icon-case"><i class="fa fa-user"></i></span>
-              <input type="text" name="prenom" id="prenom" data-rule="required" data-msg="Vérifiez votre saisie sur les champs : Le champ 'Prénom' doit être renseigné."/>
-              <div class="validation"></div>
+              <v-field type="text"  label="name" name="prenom" id="prenom" rules="required|alpha_spaces" data-msg="Vérifiez votre saisie sur les champs : Le champ 'Prénom' doit être renseigné."/>
+              <div class="validation">{{ errors.prenom }}</div>
           </div>
 
           <div class="form-group">
           <p>E-mail <span>*</span></p>	
           <span class="icon-case"><i class="fa fa-envelope-o"></i></span>
-              <input type="email" name="email" id="email" data-rule="email" data-msg="Vérifiez votre saisie sur les champs : Le champ 'E-mail' est obligatoire."/>
-              <div class="validation"></div>
+              <v-field type="email" name="email" id="email" rules="required|email" data-msg="Vérifiez votre saisie sur les champs : Le champ 'E-mail' est obligatoire."/>
+              <div class="validation">{{ errors.email }}</div>
           </div>	
 
           <div class="form-group">
           <p>Company <span>*</span></p>
           <span class="icon-case"><i class="fa fa-home"></i></span>
-              <input type="text" name="society" id="society" data-rule="required" data-msg="Vérifiez votre saisie sur les champs : Le champ 'Société' doit être renseigné."/>
-              <div class="validation"></div>
+              <v-field type="text" label="company" name="society" id="society" rules="required" data-msg="Vérifiez votre saisie sur les champs : Le champ 'Société' doit être renseigné."/>
+              <div class="validation">{{ errors.society }}</div>
           </div>
 
           <div class="form-group">
           <p>Company Address <span>*</span></p>
           <span class="icon-case"><i class="fa fa-location-arrow"></i></span>
-              <input type="text" name="adresse" id="adresse" data-rule="required" data-msg="Vérifiez votre saisie sur les champs : Le champ 'Adresse' doit être renseigné."/>
-              <div class="validation"></div>
+              <v-field type="text" label="company address" name="adresse" id="adresse" rules="required" data-msg="Vérifiez votre saisie sur les champs : Le champ 'Adresse' doit être renseigné."/>
+              <div class="validation">{{ errors.adresse }}</div>
           </div>
 
           <div class="form-group">
           <p>Postcode <span>*</span></p>
           <span class="icon-case"><i class="fa fa-map-marker"></i></span>
-              <input type="text" name="postal" id="postal" data-rule="required" data-msg="Vérifiez votre saisie sur les champs : Le champ 'Code postal' doit être renseigné."/>
-              <div class="validation"></div>
+              <v-field type="text" label="рostcode" name="postal" id="postal" rules="required|alpha_num" data-msg="Vérifiez votre saisie sur les champs : Le champ 'Code postal' doit être renseigné."/>
+              <div class="validation">{{ errors.postal }}</div>
           </div>	
 
 
@@ -62,46 +61,101 @@
           <div class="form-group">
           <p>City <span>*</span></p>
           <span class="icon-case"><i class="fa fa-building-o"></i></span>
-              <input type="text" name="ville" id="ville" data-rule="required" data-msg="Vérifiez votre saisie sur les champs : Le champ 'Ville' doit être renseigné."/>
-              <div class="validation"></div>
+              <v-field type="text" label="city" name="ville" id="ville" rules="required" data-msg="Vérifiez votre saisie sur les champs : Le champ 'Ville' doit être renseigné."/>
+              <div class="validation">{{ errors.ville }}</div>
           </div>	
 
           <div class="form-group">
           <p>Phone number <span>*</span></p>	
           <span class="icon-case"><i class="fa fa-phone"></i></span>
-              <input type="text" name="phone" id="phone" data-rule="maxlen:10" data-msg="Vérifiez votre saisie sur les champs : Le champ 'Téléphone' doit être renseigné. Minimum 10 chiffres"/>
-              <div class="validation"></div>
+              <v-field type="text" label="phone number" name="phone" id="phone" rules="required|digits:10" data-msg="Vérifiez votre saisie sur les champs : Le champ 'Téléphone' doit être renseigné. Minimum 10 chiffres"/>
+              <div class="validation">{{ errors.phone }}</div>
           </div>
 
           <div class="form-group">
           <p>Function <span>*</span></p>
           <span class="icon-case"><i class="fa fa-info"></i></span>
-              <input type="text" name="fonction" id="fonction" data-rule="required" data-msg="Vérifiez votre saisie sur les champs : Le champ 'Fonction' doit être renseigné."/>
-              <div class="validation"></div>
+              <v-field type="text" label="function" name="fonction" id="fonction" rules="required" data-msg="Vérifiez votre saisie sur les champs : Le champ 'Fonction' doit être renseigné."/>
+              <div class="validation">{{ errors.fonction }}</div>
           </div>
 
           <div class="form-group">
           <p>Subject <span>*</span></p>	
           <span class="icon-case"><i class="fa fa-comment-o"></i></span>
-              <input type="text" name="sujet" id="sujet" data-rule="required" data-msg="Vérifiez votre saisie sur les champs : Le champ 'Sujet' doit être renseigné."/>
-              <div class="validation"></div>
+              <v-field type="text" label="subject" name="sujet" id="sujet" rules="required" data-msg="Vérifiez votre saisie sur les champs : Le champ 'Sujet' doit être renseigné."/>
+              <div class="validation">{{ errors.sujet }}</div>
           </div>
       
           <div class="form-group">
           <p>Message <span>*</span></p>
           <span class="icon-case"><i class="fa fa-comments-o"></i></span>
-              <textarea name="message" rows="14" data-rule="required" data-msg="Vérifiez votre saisie sur les champs : Le champ 'Message' doit être renseigné."></textarea>
-              <div class="validation"></div>
+              <v-field v-slot="{ field }" name="message" rules="required|max:500">
+                <textarea v-bind="field" rows="14" data-msg="Vérifiez votre saisie sur les champs : Le champ 'Message' doit être renseigné."></textarea>
+                <div class="validation">{{ errors.message }}</div>
+              </v-field>
           </div>	
   </div>
   </div>
-<button type="submit" class="bouton-contact">Send</button>
-  
-</form>
+<button 
+  type="submit"
+  class="bouton-contact"
+>
+  Send
+</button>
  
+</v-form>
+
 </template>
 
 <script setup>
+import { ref } from 'vue'
+import { configure } from "vee-validate";
+import { localize } from '@vee-validate/i18n'
+
+configure({
+  generateMessage: localize('ru', {
+    messages: {
+      "alpha": "Поле {field} может содержать только буквы",
+      "alpha_dash": "Поле {field} может содержать только буквы, цифры и дефис",
+      "alpha_num": "Поле {field} может содержать только буквы и цифры",
+      "alpha_spaces": "Поле {field} может содержать только буквы и пробелы",
+      "between": "Поле {field} должно быть между 0:{min} и 1:{max}",
+      "confirmed": "Поле {field} не совпадает Подтверждение",
+      "digits": "Поле {field} должно быть числовым и точно содержать 0:{length} цифры",
+      "dimensions": "Поле {field} должно быть 0:{width} пикселей на 1:{height} пикселей",
+      "email": "Поле {field} должно быть действительным электронным адресом",
+      "excluded": "Поле {field} должно быть допустимым значением",
+      "ext": "Поле {field} должно быть действительным файлом. ({args})",
+      "image": "Поле {field} должно быть изображением",
+      "one_of": "Поле {field} должно быть допустимым значением",
+      "integer": "Поле {field} должно быть целым числом",
+      "length": "Длина поля {field} должна быть 0:{length}",
+      "max": "Поле {field} не может быть более 0:{length} символов",
+      "max_value": "Поле {field} должно быть 0:{max} или менее",
+      "mimes": "Поле {field} должно иметь допустимый тип файла. ({args})",
+      "min": "Поле {field} должно быть не менее 0:{length} символов",
+      "min_value": "Поле {field} должно быть 0:{min} или больше",
+      "numeric": "Поле {field} должно быть числом",
+      "regex": "Поле {field} имеет ошибочный формат",
+      "required": "Поле {field} должно быть заполнено",
+      "required_if": "Поле {field} обязательно для заполнения",
+      "size": "Поле {field} должно быть меньше, чем 0:{size}KB"
+    },
+    fields: {
+      email: {
+        "required": "Поле {field} является обязательным",
+      },
+    },
+  })
+})
+
+const isSubmitted = ref(false);
+
+const onSubmit = (values) => {
+    alert(JSON.stringify(values, null, 4));
+    isSubmitted.value = true;
+}
+
 
 </script>
 
@@ -171,18 +225,23 @@ input {
   padding: 0px 15px;
 }
 
+.is-invalid {
+  border-color: #F00;
+}
+
 a {
   text-decoration:inherit
 }
 
 textarea {
+  width: 75%;
+  height: 130px; 
   border-radius: 0px 5px 5px 0px;
   border: 1px solid #EEE;
   margin: 0;
-  width: 75%;
-  height: 130px; 
   float: left;
   padding: 0px 15px;
+  resize: none;
 }
 
 .form-group {
@@ -238,7 +297,7 @@ i {
 }
 
 .validation {
-  display:none;
+  /* display:none; */
   margin: 0 0 10px;
   font-weight:400;
   font-size:13px;

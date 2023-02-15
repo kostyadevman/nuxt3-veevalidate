@@ -9,6 +9,7 @@
     "nuxt3": "latest"
   },
   "dependencies": {
+    "@vee-validate/i18n": "^4.5.8",
     "@vee-validate/rules": "^4.5.11",
     "vee-validate": "^4.5.11"
   }
