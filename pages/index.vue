@@ -3,7 +3,7 @@
   <h1>Elegant Contact Form.</h1>
    <div class="info"><a href="https://www.grandvincent-marion.fr" target="_blank"><p> Made with <i class="fa fa-heart"></i> by Marion Grandvincent </p></a></div>
 
-<v-form @submit="onSubmit" v-slot="{ errors }">
+<v-form @submit="submitHandler" v-slot="{ errors }">
       <h1>Should you have any questions, please do not hesitate to contact me :</h1>
 
   <div class="contentform">
@@ -89,7 +89,8 @@
           <div class="form-group">
           <p>Message <span>*</span></p>
           <span class="icon-case"><i class="fa fa-comments-o"></i></span>
-              <v-field v-slot="{ field }" name="message" rules="required|max:500">
+              <!-- <v-field v-slot="{ field }" name="message" rules="required|max:500"> -->
+              <v-field v-slot="{ field }" name="message" rules="required|custom_rule:500,*">
                 <textarea v-bind="field" rows="14" data-msg="Vérifiez votre saisie sur les champs : Le champ 'Message' doit être renseigné."></textarea>
                 <div class="validation">{{ errors.message }}</div>
               </v-field>
@@ -151,11 +152,10 @@ configure({
 
 const isSubmitted = ref(false);
 
-const onSubmit = (values) => {
+const submitHandler = (values) => {
     alert(JSON.stringify(values, null, 4));
     isSubmitted.value = true;
 }
-
 
 </script>
 
