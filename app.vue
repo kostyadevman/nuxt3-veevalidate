@@ -4,7 +4,10 @@
   </div>
 </template>
 
-<style scoped>
-
-
+<style>
+body {
+  margin: auto;
+  background: #eaeaea;  
+  font-family: 'Open Sans', sans-serif;
+}
 </style>

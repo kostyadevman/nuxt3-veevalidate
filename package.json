@@ -6,11 +6,14 @@
     "start": "node .output/server/index.mjs"
   },
   "devDependencies": {
-    "nuxt3": "latest"
+    "nuxt3": "latest",
+    "sass": "^1.58.3"
   },
   "dependencies": {
     "@vee-validate/i18n": "^4.5.8",
     "@vee-validate/rules": "^4.5.11",
-    "vee-validate": "^4.5.11"
+    "maska": "^2.1.7",
+    "vee-validate": "^4.5.11",
+    "yup": "^0.32.11"
   }
 }

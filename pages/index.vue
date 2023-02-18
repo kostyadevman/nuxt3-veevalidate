@@ -159,7 +159,7 @@ const submitHandler = (values) => {
 
 </script>
 
-<style >
+<style scoped>
 body {
   margin: auto;
   background: #eaeaea;  
